@@ -40,7 +40,7 @@
 } else if (percentInFinal == "") {
     alert("Вы не указали крепость вычисляемого напитка");
 } else {
-    spiritsInOriginal = parseFloat (litersInOriginal) /100 * parseFloat (percentInOriginal);
+    spiritsInOriginal = Math.round((parseFloat (litersInOriginal) / 100 * parseFloat (percentInOriginal)) * 100) / 100;
     document.getElementById('spiritsInOriginal').innerHTML = "В исходном напитке "+ spiritsInOriginal +" мл. спирта";
     volumeOfFinal = spiritsInOriginal * (100 / percentInFinal);
     document.getElementById('volumeOfFinal').innerHTML = volumeOfFinal +" мл. вычисляемого напитка содержат такое же кол-во спирта ";
