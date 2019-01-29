@@ -5,32 +5,40 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
-  <h3>Расчет стоимости</h3>
-  <input type="text" id="litrish" value="" placeholder="укажите ширину">
-  <input type="text" id="procish" value="" placeholder="укажите длину">
-  <input type="text" id="procfin" value="" placeholder="%">
-  <button onclick="raschitat();">Рассчитать стоимость</button>
-  <div id="ploschad">результат</div>
-  <div id="stoimost">тоже</div>
+  <h1 class="title">СИНИЙ КАЛЬКУЛЯТОР</h1>
+  <div class="input-wrapper">
+    <label for="litersInOriginal" class="label">Кол-во исходного напитка</label>
+    <input class="input" type="number" id="litersInOriginal" value="" placeholder="В миллилитрах">
+    <label for="percentInOriginal" class="label">Его крепость</label>
+    <input class="input" type="number" id="percentInOriginal" value="" placeholder="В процентах">
+    <label for="percentInFinal" class="label">Крепость вычисляемого напитка</label>
+    <input class="input" type="number" id="percentInFinal" value="" placeholder="В процентах">
+    <button class="button" onclick="amount();">Рассчитать</button>
+    <div class="result" id="spiritsInOriginal">Здесь будет результат</div>
+    <div class="result" id="volumeOfFinal"></div>
+  </div>
 </body>
 <script>
 
-  var raschitat = function() {
-      litrish  = document.getElementById('litrish').value;
-      procish  = document.getElementById('procish').value;
-      procfin = document.getElementById('procfin').value;
-    if(litrish == ""){
-    alert("Вы не указали ширину");
-} else if(procish == ""){
-    alert("Вы не указали длину");
+  var amount = function() {
+      var litersInOriginal = document.getElementById('litersInOriginal').value;
+      var percentInOriginal = document.getElementById('percentInOriginal').value;
+      var percentInFinal = document.getElementById('percentInFinal').value;
+    if(litersInOriginal == ""){
+    alert("Вы не указали объём");
+} else if(percentInOriginal == ""){
+    alert("Вы не указали крепость");
+} else if (percentInFinal == "") {
+    alert("Вы не указали крепость вычисляемого напитка");
 } else {
-    ploschad = parseFloat (litrish) /100 * parseFloat (procish);
-    document.getElementById('ploschad').innerHTML = "Площадь равна: "+ ploschad +" кв. м.";
-    stoimost = ploschad * (100 / procfin);
-    document.getElementById('stoimost').innerHTML = "Стоимость равна: "+ stoimost +" р.";
+    spiritsInOriginal = parseFloat (litersInOriginal) /100 * parseFloat (percentInOriginal);
+    document.getElementById('spiritsInOriginal').innerHTML = "В исходном напитке "+ spiritsInOriginal +" мл. спирта";
+    volumeOfFinal = spiritsInOriginal * (100 / percentInFinal);
+    document.getElementById('volumeOfFinal').innerHTML = volumeOfFinal +" мл. вычисляемого напитка содержат такое же кол-во спирта ";
   }
 }
 </script>
