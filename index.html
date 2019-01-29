@@ -42,7 +42,7 @@
 } else {
     spiritsInOriginal = Math.round((parseFloat (litersInOriginal) / 100 * parseFloat (percentInOriginal)) * 100) / 100;
     document.getElementById('spiritsInOriginal').innerHTML = "В исходном напитке "+ spiritsInOriginal +" мл. спирта";
-    volumeOfFinal = spiritsInOriginal * (100 / percentInFinal);
+    volumeOfFinal = Math.round((spiritsInOriginal * (100 / percentInFinal)) * 100) / 100;
     document.getElementById('volumeOfFinal').innerHTML = volumeOfFinal +" мл. вычисляемого напитка содержат такое же кол-во спирта ";
   }
 }
